@@ -40,13 +40,25 @@ the **updatePropertyManually()** method is wrapped inside the this.ngZone.run() 
 
 After manually updating an input property, we can call the ChangeDetectorRef method markForCheck() to notify Angular to run change detection on the component and its child components.
  # 2. Signals vs. Observables
+ source: https://youtu.be/4FkFmn0LmLI?si=cjbQglPLpcG1auma
+ <br>
+ Signals are good for Synchronous Reactivity. They are not good for Asynchronous Reactivity.
+ Signals do not suffer from the Diamond Problem in which changes in the value are computed one at a time, instead of simultaneously. 
+ 
+
    ## Asynchronous reactivity
+   > Asynchronous reactivity – we must wait some time to set a new value. Maybe this is due to an API etc.
+   Ex. Search – due to serverside processing that may terminate at different moments while typing in the searchbar
    ## Synchronous reacitvity
+   > Synchronous Reactivity – a value is known and can be set immediately.
 # 3.  Subscriptions
 # 4. Inputs
   ## Input getters and Setters
   reading: https://blog.bitsrc.io/simplify-input-property-handling-in-angular-with-setters-and-getters-256ddca84ac1
-    Setters and getters provide a simpler and more controlled way to handle input property changes. They encapsulate the logic within the component and offer more flexibility when performing additional validations or triggering custom methods.
+  <br> **Setters and getters** provide a simpler and more controlled way to handle input property changes. They encapsulate the logic within the component and offer more flexibility when performing additional validations or triggering custom methods.<br>
+ 
+ > **Pros:** recieve parameter value and parse it immediately.<br>
+ > **Cons:** no default values on getters and setters. <br>
   ```
   export class MyComponent {
   private _myProperty: string;

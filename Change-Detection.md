@@ -39,6 +39,25 @@ export class MyComponent {
 the **updatePropertyManually()** method is wrapped inside the this.ngZone.run() function. This ensures that the property change triggers change detection and propagates the updated value throughout the application.
 
 After manually updating an input property, we can call the ChangeDetectorRef method markForCheck() to notify Angular to run change detection on the component and its child components.
+  Angular uses these strategies to determine whether a child component should be checked while running change detection for a parent component.
+  >The default strategy, internally referred to as CheckAlways, implies regular automatic change detection for a component unless the view is explicitly detached.
+
+> What’s known as OnPush strategy, internally referred to as CheckOnce, implies that change detection is skipped unless a component is marked as dirty. Angular implements mechanisms to automatically mark a component as dirty. When needed, a component can be marked dirty manually using markForCheck method exposed on ChangeDetectorRef.
+## Default strategy
+Default change detection strategy means that a child component will always be checked if its parent component is checked. The only exception to that rule is that if you detach a change detector of the child component like this:
+```
+@Component({
+  selector: 'a-op',
+  template: `I am OnPush component`
+})
+export class AOpComponent {
+  constructor(private cdRef: ChangeDetectorRef) {
+    cdRef.detach();
+  }
+}
+```
+## onPush aka CheckOnce strategy
+change detection is skipped for a component until it’s marked as dirty, then checked once, and then skipped again. A component can be marked dirty either automatically or manually using markForCheck method.
  # 2. Signals vs. Observables
  source: https://youtu.be/4FkFmn0LmLI?si=cjbQglPLpcG1auma
  <br>
@@ -78,4 +97,6 @@ After manually updating an input property, we can call the ChangeDetectorRef met
 
   
   ## Input OnPush
+  **Angular implements two strategies that control change detection behavior on the level of individual components. Those strategies are defined as Default and OnPush:**
+
   ## NgOnChanges

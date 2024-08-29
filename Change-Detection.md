@@ -44,7 +44,9 @@ After manually updating an input property, we can call the ChangeDetectorRef met
  <br>
  Signals are good for Synchronous Reactivity. They are not good for Asynchronous Reactivity.
  Signals do not suffer from the Diamond Problem in which changes in the value are computed one at a time, instead of simultaneously. 
- 
+ <br>
+ ![change detection must reprocess every affected asset step by step.](./diamond_step1.png)
+ ![](./diamond_step2.png)
 
    ## Asynchronous reactivity
    > Asynchronous reactivity – we must wait some time to set a new value. Maybe this is due to an API etc.

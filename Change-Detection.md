@@ -74,9 +74,9 @@ change detection is skipped for a component until it’s marked as dirty, then c
    > Synchronous Reactivity – a value is known and can be set immediately.
 # 3.  Subscriptions
 # 4. Inputs
-  ## Input getters and Setters
+  ## Input Getters and Setters
   reading: https://blog.bitsrc.io/simplify-input-property-handling-in-angular-with-setters-and-getters-256ddca84ac1
-  <br> **Setters and getters** provide a simpler and more controlled way to handle input property changes. They encapsulate the logic within the component and offer more flexibility when performing additional validations or triggering custom methods.<br>
+  <br> **Setters and Getters** provide a simpler and more controlled way to handle input property changes. They encapsulate the logic within the component and offer more flexibility when performing additional validations or triggering custom methods.<br>
  
  > **Pros:** recieve parameter value and parse it immediately.<br>
  > **Cons:** no default values on getters and setters. <br>

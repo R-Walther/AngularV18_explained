@@ -1,5 +1,7 @@
  # 1. The Zone
  Reading: https://justangular.com/blog/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story
+ <br> Video Summary: https://www.youtube.com/watch?v=DbUS6h1tANQ
+ <br>
  The **NgZone** helps in managing the execution context and provides a method called run() that triggers change detection. Here's an example:
  ```
 import { Component, Input, NgZone } from '@angular/core';

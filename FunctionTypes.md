@@ -1,5 +1,6 @@
 # Async Functions / promises
 
-#Lifecycle hooks
+# Lifecycle hooks
 
-#
+# Observabes vs Subjects
+nex, error handeling etc

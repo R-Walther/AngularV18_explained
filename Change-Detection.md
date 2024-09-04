@@ -2,7 +2,8 @@
  Reading: https://justangular.com/blog/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story
  <br> Video Summary: https://www.youtube.com/watch?v=DbUS6h1tANQ
  <br>
- The **NgZone** helps in managing the execution context and provides a method called run() that triggers change detection. Here's an example:
+ The Zone is the area that Angular displays. How does Angular know when to refresh the view? How does it know when the data changes? How does it know when to run the change detection?
+ <br> The **NgZone** helps in managing the execution context and provides a method called run() that triggers change detection. Here's an example:
  ```
 import { Component, Input, NgZone } from '@angular/core';
 
@@ -73,8 +74,10 @@ change detection is skipped for a component until it’s marked as dirty, then c
    ## Asynchronous reactivity
    > Asynchronous reactivity – we must wait some time to set a new value. Maybe this is due to an API etc.
    Ex. Search – due to serverside processing that may terminate at different moments while typing in the searchbar
+   Observables, Promises, Async functions.
    ## Synchronous reacitvity
    > Synchronous Reactivity – a value is known and can be set immediately.
+   Signal, Variables, standrard functions 
 # 3.  Subscriptions
 
 # 4. Inputs

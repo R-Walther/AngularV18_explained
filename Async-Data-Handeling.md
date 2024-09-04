@@ -1,6 +1,8 @@
 # Async Functions / promises
 Both Observables and Async Functions return an asynchronous primitive. 
+```
 Observable<T> | Subscribable<T> | Promise<T>
+```
 <br>
 these are value streams or expected values. They are unresolved at the moment they are referenced, hence asynchronous. <br> <br> Handling these is different from value primitives such as number, string etc.
 

@@ -1,8 +1,9 @@
  # 1. The Zone
  Reading: https://justangular.com/blog/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story
  <br> Video Summary: https://www.youtube.com/watch?v=DbUS6h1tANQ
- <br>
- The Zone is the area that Angular displays. How does Angular know when to refresh the view? How does it know when the data changes? How does it know when to run the change detection?
+ <br> **How does Angular know when to refresh the view? How does it know when the data changes? How does it know when to run the change detection?**
+<br><br> Zone.js has been around since the early days of Angular 2.0. It is a library that monkey patches the browser APIs and enables us to hook into the lifecycle of the browser events. 
+ 
  <br> The **NgZone** helps in managing the execution context and provides a method called run() that triggers change detection. Here's an example:
  ```
 import { Component, Input, NgZone } from '@angular/core';
@@ -105,5 +106,6 @@ change detection is skipped for a component until it’s marked as dirty, then c
   
   ## Input OnPush
   **Angular implements two strategies that control change detection behavior on the level of individual components. Those strategies are defined as Default and OnPush:**
+  
 
   ## NgOnChanges

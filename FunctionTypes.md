@@ -1,5 +1,36 @@
 # Async Functions / promises
+Both Observables and Async Functions return an asynchronous primitive. 
+Observable<T> | Subscribable<T> | Promise<T>
+<br>
+these are value streams or expected values. They are unresolved at the moment they are referenced, hence asynchronous. <br> <br> Handling these is different from value primitives such as number, string etc.
 
+## Promises
+A Promise represents a value which might be available now, or in the future, or never.
+### Characteristics of Promises:
+1. Single Value: Promises represent a single value that will be resolved or rejected.
+2. Immutable State: Once a Promise is resolved or rejected, its state cannot be changed.
+3. Error Handling: Promises have built-in error handling through .catch() or try...catch blocks.
+
+```
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Data fetched successfully!');
+        }, 2000);
+    });
+}
+
+fetchData()
+    .then(data => {
+        console.log(data); // Output: Data fetched successfully!
+    })
+    .catch(error => {
+        console.error(error);
+    });
+In this example, fetchData() returns a Promise that resolves after 2 seconds, simulating an asynchronous operation.
+
+
+```
 # Lifecycle hooks
 
 # Observabes vs Subjects
@@ -53,7 +84,7 @@
 Note: Subscriptions should be unsubscribed on Components and types that are created and destroyed within the single-page application. Services do not need unsubscribe, as they exist throughtout the application.
 
 ## Subject
- - An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. 
+ - An RxJS Subject is a **special type of Observable** that allows values to be multicasted to many Observers. 
  - It is an object with the methods next(v), error(e), and complete(). To feed a new value to the Subject, just call next(theValue), and it will be multicasted to the Observers registered to listen to the Subject.
  - It does not have an initial value, so subscribers only receive values emitted after they subscribe.
 ```

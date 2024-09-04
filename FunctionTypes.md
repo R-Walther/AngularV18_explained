@@ -9,6 +9,9 @@
   - Observables provide support for passing messages between parts of your application.
   - Observables are a powerful feature used extensively in reactive programming to handle **asynchronous** operations and data streams.
   - Observables provide a way to **subscribe** to and receive notifications when new data or events are emitted, enabling you to react to changes in real-time.
+  
+  - Observables are declarative. You define a function for publishing values — the source — but that function is not executed until a consumer subscribes to the observable by calling the observable's subscribe method.
+  - This subscriber then receives notifications from the observable until it completes, emits an error, or the consumer unsubscribes.
 
     ```
     //------------------Observables are unicast-----------------
@@ -38,6 +41,14 @@
     Subscriber 1: 0.84659
     Subscriber 2: 0.4123
     Subscriber 3: 0.92318
+    ```
+
+    ```
+    numbers$.subscribe({
+      next: value => console.log('Observable emitted the next value: ' + value),
+      error: err => console.error('Observable emitted an error: ' + err),
+      complete: () => console.log('Observable emitted the complete notification')
+    });
     ```
 
 ## Subject

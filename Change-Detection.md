@@ -76,6 +76,7 @@ change detection is skipped for a component until it’s marked as dirty, then c
    ## Synchronous reacitvity
    > Synchronous Reactivity – a value is known and can be set immediately.
 # 3.  Subscriptions
+
 # 4. Inputs
   ## Input Getters and Setters
   reading: https://blog.bitsrc.io/simplify-input-property-handling-in-angular-with-setters-and-getters-256ddca84ac1

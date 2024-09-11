@@ -113,6 +113,14 @@ possible approaches:
    }
   }
    ```
+> ChangeDetectionStrategy.OnPush tells Angular that the component only depends on its @Inputs() and **needs to be checked only in the following cases:**
+> The Input reference changes.
+><br><br>
+> An event originated from the component or one of its children.
+><br><br>
+> We run change detection explicitly.
+><br><br>
+> So it depends from your component's content and what you are trying to achieve with it. For example if you are using async pipe for your subscriptions, your component doesn't need ChangeDetectionStrategy.OnPush, because async will do the job automatically.
   ## 3. @Input and @Output getters and setters
    reading: [angular-with-setters-and-getters](https://blog.bitsrc.io/simplify-input-property-handling-in-angular-with-setters-and-getters-256ddca84ac1)   
    provide a simpler and more controlled way to handle input property changes. They encapsulate the logic within the component and offer more flexibility when performing additional validations or triggering custom methods.<br>

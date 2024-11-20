@@ -50,3 +50,9 @@ export class EffectiveCounterComponent {
   }
 }
 ```
+You can prevent a signal read from being tracked by calling its getter with untracked:
+```
+effect(() => {
+  console.log(`User set to ${currentUser()} and the counter is ${untracked(counter)}`);
+});
+```

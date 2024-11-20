@@ -83,6 +83,11 @@ In this example, fetchData() returns a Promise that resolves after 2 seconds, si
       complete: () => console.log('Observable emitted the complete notification')
     });
     ```
+
+
+  //behaviorSubjuect saves content
+  //subject is a notification
+
 Note: Subscriptions should be unsubscribed on Components and types that are created and destroyed within the single-page application. Services do not need unsubscribe, as they exist throughtout the application.
 
 ## Subject

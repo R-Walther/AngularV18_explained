@@ -1,6 +1,5 @@
 # Signals
 
-
 ## Writing Signals
 To change the value of a writable signal, either .set() it directly:
 ```
@@ -25,7 +24,15 @@ check
 The doubleCount signal depends on the count signal. Whenever count updates, Angular knows that doubleCount needs to update as well.
 
 - Computed signals are not writable signals
-
+- signals assigned to variables are updated automatically. Be careful, that any conversion to the signal will only give you the first value and not update. Use Compute for this
+  ```
+  //does not work
+   protected activeContextID: ContextID = this.contextService.$activeContext().contextID;
+  //correct
+  protected activeContextID: ContextID = computed(() => {
+    return this.contextService.$activeContext().contextID;
+  })();
+  ```
 ### Effect
  An effect is an operation that runs whenever one or more signal values change
  ```
@@ -56,3 +63,15 @@ effect(() => {
   console.log(`User set to ${currentUser()} and the counter is ${untracked(counter)}`);
 });
 ```
+
+## Signal Operators
+
+
+### Observables to Signals
+```
+const count$ = increment$.pipe(scan(n => n + 1, 0));
+
+const count = toSignal(count$);
+```
+
+

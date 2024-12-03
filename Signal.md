@@ -1,4 +1,13 @@
 # Signals
+### Inputs, Outputs, Viewchild and others have a new syntax that automatically converts them to Signals
+```
+mainContainer : Signal<ElementRef<any> | undefined> =  viewChild<ElementRef>('blurredBg');
+//input signal
+value = input<number>(0);
+//ouput signal
+panelClosed = output<void>();
+```
+
 
 ## Writing Signals
 To change the value of a writable signal, either .set() it directly:

@@ -31,3 +31,16 @@ Using addClass on Native element
     return this.isSourceSelectOpened || this.isExpanded;
   }
 ```
+## Working with Signal Hostbinding
+In the Typescript:
+```
+@Component({
+....
+host: {
+'[class..inactive]':'this.inactive'
+  }
+})
+export class TestClass {
+  inactive = input<boolean>(false);
+}
+```

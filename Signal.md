@@ -1,14 +1,4 @@
 # Signals
-### Inputs, Outputs, Viewchild and others have a new syntax that automatically converts them to Signals
-```
-mainContainer : Signal<ElementRef<any> | undefined> =  viewChild<ElementRef>('blurredBg');
-//input signal
-value = input<number>(0);
-//ouput signal
-panelClosed = output<void>();
-```
-
-
 ## Writing Signals
 To change the value of a writable signal, either .set() it directly:
 ```
@@ -95,6 +85,16 @@ But if you call toSignal in a shared service, the source observable will consume
 
 
 ## Input Data Handling
+### Inputs, Outputs, Viewchild and others have a new syntax that automatically converts them to Signals
+```
+mainContainer : Signal<ElementRef<any> | undefined> =  viewChild<ElementRef>('blurredBg');
+//input signal
+value = input<number>(0);
+//ouput signal
+panelClosed = output<void>();
+```
+
+
 ### Input
 The input function returns an InputSignal. You can read the value by calling the signal:
 ```
@@ -110,7 +110,6 @@ export class CustomSlider {
 
 }
 ```
-check
 Signals created by the input function are read-only.
 ### Model
 Model inputs are a special type of input that enable a component to propagate new values back to its parent component.

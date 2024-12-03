@@ -74,14 +74,25 @@ effect(() => {
 ```
 
 ## Signal Operators
-
-
-### Observables to Signals
+### Observables to Signals 
 ```
 const count$ = increment$.pipe(scan(n => n + 1, 0));
 
 const count = toSignal(count$);
 ```
+toSignal(source$) immediately subscribes to the source$ observable, and stays subscribed until it is destroyed. This is necessary because signals are expected to always contain a current value that can be read from at any time. However, it blocks the ability of RxJS streams to automatically
+
+Problems:
+#### clean up :
+_toSignal_ in a shared service, the source observable will never clean up resources.
+#### reset and re-fetch :
+Apps that don't use RxJS effectively will have extra code that runs inside an OnDestroy to manually clear stale data. They also have to manually trigger a re-fetch.
+if you call toSignal in a shared service, the source observable will never reset its state or re-fetch data
+#### cancel requests
+#### defer work and requests :
+Observables can represent data sources but wait for subscribers instead of prematurely consuming them.
+But if you call toSignal in a shared service, the source observable will consume the data source it represents as soon as that service is created:
+
 
 ## Input Data Handling
 ### Input

@@ -74,4 +74,58 @@ const count$ = increment$.pipe(scan(n => n + 1, 0));
 const count = toSignal(count$);
 ```
 
+## Input Data Handling
+### Input
+The input function returns an InputSignal. You can read the value by calling the signal:
+```
+import {Component, input} from '@angular/core';
+@Component({/*...*/})
+export class CustomSlider {
+  // Declare an input named 'value' with a default value of zero. 
+  value = input(0);
+  // Create a computed expression that reads the value input
+  label = computed(() => `The slider's value is ${this.value()}`);
+  // Declare a required input named value. Returns an `InputSignal<number>`.
+  value = input.required<number>();
 
+}
+```
+check
+Signals created by the input function are read-only.
+### Model
+Model inputs are a special type of input that enable a component to propagate new values back to its parent component.
+```
+@Component({ /* ... */})
+export class CustomSlider {
+  // Define a model input named "value".
+  value = model(0);
+  increment() {
+    // Update the model input with a new value, propagating the value to any bindings. 
+    this.value.update(oldValue => oldValue + 10);
+  }
+}
+@Component({
+  /* ... */
+  // Using the two-way binding syntax means that any changes to the slider's
+  // value automatically propagate back to the `volume` signal.
+  // Note that this binding uses the signal *instance*, not the signal value.
+  template: `<custom-slider [(value)]="volume" />`,
+})
+export class MediaControls {
+  // Create a writable signal for the `volume` local state. 
+  volume = signal(0);
+}
+```
+In the above example, the **CustomSlider** can write values into its value model input, which then propagates those values back to the volume signal in **MediaControls**. This binding keeps the values of value and volume in sync. Notice that the binding passes the volume signal instance, not the value of the signal.
+_______
+When you declare a model input in a component or directive, Angular automatically creates a corresponding output for that model. The output's name is the model input's name suffixed with "Change".
+```
+@Directive({ /* ... */ })
+export class CustomCheckbox {
+  // This automatically creates an output named "checkedChange".
+  // Can be subscribed to using `(checkedChange)="handler()"` in the template.
+  checked = model(false);
+}
+check
+Angular emits this change event whenever you write a new value into the model input by calling its set or update methods.
+```
